@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-sections',
@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
         <div class="feature-grid">
           <div class="feature-item">
             <div class="feature-image">
-              <img src="/assets/images/bggg.jpg" alt="探索冒險">
+              <img data-src="/assets/images/bggg.webp" alt="探索冒險" class="lazy-image">
             </div>
             <div class="feature-content">
               <h3>聊天冒險</h3>
@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
 
           <div class="feature-item">
             <div class="feature-image">
-              <img src="/assets/images/gameplay.png" alt="即時戰鬥">
+              <img data-src="/assets/images/gameplay.webp" alt="即時戰鬥" class="lazy-image">
             </div>
             <div class="feature-content">
               <h3>即時戰鬥</h3>
@@ -31,7 +31,7 @@ import { Component } from '@angular/core';
 
           <div class="feature-item">
             <div class="feature-image">
-              <img src="/assets/images/companions.png" alt="夥伴收集">
+              <img data-src="/assets/images/companions.webp" alt="夥伴收集" class="lazy-image">
             </div>
             <div class="feature-content">
               <h3>夥伴收集</h3>
@@ -41,7 +41,7 @@ import { Component } from '@angular/core';
 
           <div class="feature-item">
             <div class="feature-image">
-              <img src="/assets/images/trade.png" alt="自由交易">
+              <img data-src="/assets/images/trade.webp" alt="自由交易" class="lazy-image">
             </div>
             <div class="feature-content">
               <h3>自由交易</h3>
@@ -51,7 +51,7 @@ import { Component } from '@angular/core';
 
           <div class="feature-item">
             <div class="feature-image">
-              <img src="/assets/images/boss_girl2.png" alt="世界Boss">
+              <img data-src="/assets/images/boss_girl2.webp" alt="世界Boss" class="lazy-image">
             </div>
             <div class="feature-content">
               <h3>世界Boss</h3>
@@ -70,7 +70,7 @@ import { Component } from '@angular/core';
         <div class="equipment-showcase">
           <div class="equipment-feature">
             <div class="equipment-image">
-              <img src="/assets/images/weapon.jpg" alt="裝備收集">
+              <img data-src="/assets/images/weapon.webp" alt="裝備收集" class="lazy-image">
             </div>
             <div class="feature-text">
               <h3>多樣裝備收集</h3>
@@ -80,7 +80,7 @@ import { Component } from '@angular/core';
 
           <div class="equipment-feature">
             <div class="equipment-image">
-              <img src="/assets/images/enhance.png" alt="強化系統">
+              <img data-src="/assets/images/enhance.webp" alt="強化系統" class="lazy-image">
             </div>
             <div class="feature-text">
               <h3>進階強化系統</h3>
@@ -90,7 +90,7 @@ import { Component } from '@angular/core';
 
           <div class="equipment-feature">
             <div class="equipment-image">
-              <img src="/assets/images/refine.png" alt="屬性重鑄">
+              <img data-src="/assets/images/refine.webp" alt="屬性重鑄" class="lazy-image">
             </div>
             <div class="feature-text">
               <h3>屬性重鑄</h3>
@@ -110,7 +110,7 @@ import { Component } from '@angular/core';
           <div class="partners-grid">
             <div class="partner-card">
               <div class="partner-image">
-                <img src="/assets/images/gacha.png" alt="轉蛋系統">
+                <img data-src="/assets/images/gacha.webp" alt="轉蛋系統" class="lazy-image">
                 <div class="rarity-badge">
                   <span>★</span>
                   <span>★★</span>
@@ -126,7 +126,7 @@ import { Component } from '@angular/core';
 
             <div class="partner-card">
               <div class="partner-image">
-                <img src="/assets/images/companion_like.png" alt="親密度系統">
+                <img data-src="/assets/images/companion_like.webp" alt="親密度系統" class="lazy-image">
                 <div class="heart-meter">
                   <div class="heart-icon"></div>
                 </div>
@@ -140,7 +140,7 @@ import { Component } from '@angular/core';
 
             <div class="partner-card">
               <div class="partner-image">
-                <img src="/assets/images/star.png" alt="星級系統">
+                <img data-src="/assets/images/star.webp" alt="星級系統" class="lazy-image">
                 <div class="star-evolution">
                   <div class="star-stage">
                     <span class="star">★</span>
@@ -169,7 +169,7 @@ import { Component } from '@angular/core';
 
           <div class="expedition-feature">
             <div class="feature-image">
-              <img src="/assets/images/exploration.png" alt="探險隊系統">
+              <img data-src="/assets/images/exploration.webp" alt="探險隊系統" class="lazy-image">
             </div>
             <div class="feature-content">
               <h3>探險隊系統</h3>
@@ -239,19 +239,16 @@ import { Component } from '@angular/core';
           <div class="community-content">
             <div class="community-features">
               <div class="community-feature">
-                <div class="feature-icon news-icon"></div>
                 <h3>最新消息</h3>
                 <p>第一時間獲得遊戲更新、活動資訊</p>
               </div>
 
               <div class="community-feature">
-                <div class="feature-icon guide-icon"></div>
                 <h3>攻略分享</h3>
                 <p>與玩家交流遊戲心得、組隊策略</p>
               </div>
 
               <div class="community-feature">
-                <div class="feature-icon event-icon"></div>
                 <h3>社群活動</h3>
                 <p>參與限定活動，獲得特殊獎勵</p>
               </div>
@@ -270,7 +267,7 @@ import { Component } from '@angular/core';
   styles: [`
     .game-section {
       min-height: 100vh;
-      padding: 50px 5%;
+      padding: 100px 5%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -314,11 +311,11 @@ import { Component } from '@angular/core';
     }
 
     #intro {
-      background-image: url('/assets/images/test1.png');
+      background-image: url('/assets/images/test1.webp');
     }
 
     // #equipment {
-    //   background-image: url('/assets/images/test5.png');
+    //   background-image: url('/assets/images/test5.webp');
     // }
 
     // #partners {
@@ -330,7 +327,7 @@ import { Component } from '@angular/core';
     // }
 
     #community {
-      background-image: url('/assets/images/test3.png');
+      background-image: url('/assets/images/test3.webp');
     }
 
     .intro-content {
@@ -966,7 +963,7 @@ import { Component } from '@angular/core';
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/assets/images/test1.png');
+      background-image: url('/assets/images/test1.webp');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -1018,18 +1015,6 @@ import { Component } from '@angular/core';
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-    }
-
-    .news-icon {
-      background-image: url('/assets/images/news-icon.png');
-    }
-
-    .guide-icon {
-      background-image: url('/assets/images/guide-icon.png');
-    }
-
-    .event-icon {
-      background-image: url('/assets/images/event-icon.png');
     }
 
     .community-cta {
@@ -1105,6 +1090,78 @@ import { Component } from '@angular/core';
         font-size: 1.1rem;
       }
     }
+
+    .lazy-image {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-color: #1a1a1a; /* 加载前的背景色 */
+    }
+
+    .lazy-image.loaded {
+      opacity: 1;
+    }
   `]
 })
-export class SectionsComponent {}
+export class SectionsComponent implements OnInit {
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    this.setupLazyLoading();
+  }
+
+  setupLazyLoading() {
+    // 如果浏览器支持Intersection Observer
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          // 当图片进入视口
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            const src = img.getAttribute('data-src');
+            
+            if (src) {
+              // 创建一个新图片对象来预加载
+              const newImg = new Image();
+              newImg.src = src;
+              
+              // 当图片加载完成后
+              newImg.onload = () => {
+                // 设置实际src并添加loaded类
+                img.src = src;
+                img.classList.add('loaded');
+              };
+              
+              // 图片加载失败时的处理
+              newImg.onerror = () => {
+                console.error('图片加载失败:', src);
+              };
+            }
+            
+            // 停止观察已处理的图片
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 }); // 当10%的图片可见时触发
+      
+      // 获取所有需要懒加载的图片
+      const lazyImages = this.el.nativeElement.querySelectorAll('.lazy-image');
+      lazyImages.forEach((img: HTMLImageElement) => {
+        imageObserver.observe(img);
+      });
+    } else {
+      // 如果浏览器不支持Intersection Observer，直接加载所有图片
+      this.loadAllImages();
+    }
+  }
+
+  loadAllImages() {
+    const lazyImages = this.el.nativeElement.querySelectorAll('.lazy-image');
+    lazyImages.forEach((img: HTMLImageElement) => {
+      const src = img.getAttribute('data-src');
+      if (src) {
+        img.src = src;
+        img.classList.add('loaded');
+      }
+    });
+  }
+}

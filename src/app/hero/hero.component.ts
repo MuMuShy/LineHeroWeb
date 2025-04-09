@@ -1,21 +1,15 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
   template: `
     <section class="hero">
-      <div class="hero-background"></div>
+      <div class="hero-background" [class.loaded]="backgroundLoaded"></div>
       <div class="hero-overlay">
-        <div class="floating-elements">
-          <div class="element wind"></div>
-          <div class="element fire"></div>
-          <div class="element water"></div>
-          <div class="element earth"></div>
-        </div>
         <div class="hero-content">
           <!-- <div class="logo-container">
-            <img src="/assets/images/logo.png" alt="Logo" class="game-logo">
+            <img src="/assets/images/logo.webp" alt="Logo" class="game-logo">
           </div> -->
           <h1 class="hero-title">踏上冒險旅程</h1>
           <p class="hero-subtitle">不需安裝，LINE聊天視窗立即遊玩</p>
@@ -47,14 +41,21 @@ import { Component, HostListener } from '@angular/core';
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('/assets/images/test4.png');
+      background-color: #1a1a1a; /* 加载前的背景色 */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      transition: transform 0.3s ease-out;
+      transition: transform 0.3s ease-out, opacity 0.5s ease;
+      will-change: transform;
+      opacity: 0;
     }
 
-    .hero:hover .hero-background {
+    .hero-background.loaded {
+      background-image: url('/assets/images/test4.webp');
+      opacity: 1;
+    }
+
+    .hero:hover .hero-background.loaded {
       transform: scale(1.05);
     }
 
@@ -89,34 +90,6 @@ import { Component, HostListener } from '@angular/core';
       background-repeat: no-repeat;
       animation: floatAnimation 4s ease-in-out infinite;
       opacity: 0.6;
-    }
-
-    .wind {
-      top: 20%;
-      left: 10%;
-      background-image: url('/assets/images/wind-element.png');
-      animation-delay: 0s;
-    }
-
-    .fire {
-      top: 30%;
-      right: 15%;
-      background-image: url('/assets/images/fire-element.png');
-      animation-delay: 1s;
-    }
-
-    .water {
-      bottom: 25%;
-      left: 15%;
-      background-image: url('/assets/images/water-element.png');
-      animation-delay: 2s;
-    }
-
-    .earth {
-      bottom: 20%;
-      right: 10%;
-      background-image: url('/assets/images/earth-element.png');
-      animation-delay: 3s;
     }
 
     .hero-content {
@@ -260,8 +233,52 @@ import { Component, HostListener } from '@angular/core';
     }
   `]
 })
-export class HeroComponent {
+export class HeroComponent implements OnInit {
   isScrolled = false;
+  backgroundLoaded = false;
+
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    // 预加载背景图片
+    const img = new Image();
+    img.src = '/assets/images/test4.webp';
+    img.onload = () => {
+      this.backgroundLoaded = true;
+    };
+    
+    // 使用Intersection Observer检测元素是否在视口中
+    this.setupLazyLoading();
+  }
+
+  setupLazyLoading() {
+    // 如果浏览器支持Intersection Observer
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // 当元素进入视口
+          if (entry.isIntersecting) {
+            // 如果图片还没加载，则加载图片
+            if (!this.backgroundLoaded) {
+              const img = new Image();
+              img.src = '/assets/images/test4.webp';
+              img.onload = () => {
+                this.backgroundLoaded = true;
+              };
+            }
+            // 停止观察
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 }); // 当10%的元素可见时触发
+
+      // 开始观察hero元素
+      observer.observe(this.el.nativeElement.querySelector('.hero'));
+    } else {
+      // 如果浏览器不支持Intersection Observer，直接加载
+      this.backgroundLoaded = true;
+    }
+  }
 
   @HostListener('window:scroll')
   onWindowScroll() {
