@@ -1,0 +1,359 @@
+.chat-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+.chat-header {
+  background: #7c5ec6;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .bot-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .chat-info {
+    color: white;
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .status {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  }
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.message {
+  margin-bottom: 16px;
+  max-width: 80%;
+  
+  .message-content {
+    padding: 12px;
+    border-radius: 12px;
+    word-break: break-word;
+    
+    p {
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  .message-time {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+  }
+}
+
+.user-message {
+  margin-left: auto;
+  
+  .message-content {
+    background: #00c300;
+    color: white;
+  }
+
+  .message-time {
+    text-align: right;
+  }
+}
+
+.bot-message {
+  margin-right: auto;
+  
+  .message-content {
+    background: white;
+    color: #333;
+  }
+}
+
+.flex-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.flex-button {
+  background: white;
+  border: 1px solid #00c300;
+  color: #00c300;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  
+  &:hover {
+    background: #00c300;
+    color: white;
+  }
+}
+
+.input-area {
+  padding: 16px;
+  background: white;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  
+  input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    
+    &:focus {
+      border-color: #00c300;
+    }
+  }
+  
+  button {
+    background: #00c300;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    
+    &:hover {
+      background: #00b300;
+    }
+  }
+}
+
+.image-message {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.chat-demo-hint {
+    background: rgba(0, 195, 0, 0.1);
+    border: 1px solid #00c300;
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .hint-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #00c300;
+      
+      i {
+        font-size: 1.2rem;
+      }
+    }
+    
+    .hint-arrow {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(0, 195, 0, 0.8);
+      
+      i {
+        animation: bounce 2s infinite;
+      }
+    }
+  }
+  
+  // 添加按鈕懸浮效果
+  .flex-button {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 195, 0, 0.2);
+    }
+  }
+  
+  // 添加輸入框提示動畫
+  .input-area {
+    input {
+      &::placeholder {
+        animation: placeholderFade 3s infinite;
+      }
+    }
+    
+    button {
+      position: relative;
+      overflow: hidden;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(-100%);
+      }
+      
+      &:hover::after {
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+      }
+    }
+  }
+  
+  // 動畫效果
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @keyframes placeholderFade {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  // 增強聊天窗口的互動感
+  .chat-container {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 195, 0, 0.15);
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #00c300, transparent);
+      border-radius: 10px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    &:hover::before {
+      opacity: 0.5;
+    }
+  }
+  
+  // 消息出現動畫
+  .message {
+    animation: messageAppear 0.3s ease-out;
+  }
+  
+  @keyframes messageAppear {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+.chat-simulator {
+  position: relative;
+  padding: 2rem;
+}
+
+.demo-pointer {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  z-index: 10;
+  
+  .pointer-content {
+    background: rgba(0, 195, 0, 0.1);
+    border: 2px solid #00c300;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #00c300;
+    animation: float 3s ease-in-out infinite;
+    
+    i {
+      font-size: 1.5rem;
+    }
+    
+    span {
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  }
+  
+  .pointer-arrow {
+    position: absolute;
+    right: -45px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: point 2s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes point {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(5px);
+  }
+}
+
+// 在小螢幕上隱藏提示
+@media (max-width: 1200px) {
+  .demo-pointer {
+    display: none;
+  }
+}

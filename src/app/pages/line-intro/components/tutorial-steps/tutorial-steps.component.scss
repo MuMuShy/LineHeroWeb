@@ -1,0 +1,169 @@
+.tutorial-section {
+  background: rgba(124, 94, 198, 0.1);
+  padding: 4rem 2rem;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #7c5ec6;
+    margin-bottom: 3rem;
+  }
+}
+
+.tutorial-steps {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+
+  .qr-code-container {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    height: fit-content;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .qr-code-text {
+      margin: 0.5rem 0 0;
+      color: #00B900;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+
+  .step {
+    &:nth-child(n+2):nth-child(-n+4) {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(2, 1fr);
+    
+    .qr-code-container {
+      position: relative;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      width: fit-content;
+      margin: 0 auto 2rem;
+    }
+
+    .step {
+      &:nth-child(n+2):nth-child(-n+4) {
+        grid-column: auto;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  border: 1px solid rgba(124, 94, 198, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(124, 94, 198, 0.8);
+    box-shadow: 0 0 30px rgba(124, 94, 198, 0.2);
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: #7c5ec6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 auto 1rem;
+  }
+
+  h3 {
+    color: #7c5ec6;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.add-bot-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #00B900;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #009900;
+    transform: translateY(-2px);
+  }
+}
+
+.tutorial-note {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  border: 1px solid rgba(124, 94, 198, 0.3);
+
+  .note-content {
+    h4 {
+      color: #7c5ec6;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+
+        &:before {
+          content: '•';
+          color: #7c5ec6;
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+}

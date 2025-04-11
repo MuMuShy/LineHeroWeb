@@ -1,0 +1,119 @@
+.game-features {
+  padding: 2rem;
+  
+  h2 {
+    font-size: 2.5rem;
+    color: #7c5ec6;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background: rgba(124, 94, 198, 0.1);
+  border: 1px solid rgba(124, 94, 198, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(124, 94, 198, 0.8);
+    box-shadow: 0 0 30px rgba(124, 94, 198, 0.2);
+  }
+
+  .feature-icon {
+    color: #00c300;  // LINE的主題綠色
+    margin-bottom: 1rem;
+    
+    fa-icon {
+      filter: drop-shadow(0 0 10px rgba(0, 195, 0, 0.3));
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: #7c5ec6;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.gameplay-preview {
+  h3 {
+    font-size: 2rem;
+    color: #7c5ec6;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+.preview-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.preview-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(124, 94, 198, 0.2);
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .preview-content {
+    padding: 1.5rem;
+
+    h4 {
+      font-size: 1.3rem;
+      color: #7c5ec6;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+}

@@ -1,3 +1,20 @@
+# LINE Hero Website Robots.txt
 User-agent: *
 Allow: /
+Allow: /game-intro/line
+Allow: /game-intro/web
+
+# Allow crawling of sitemap
 Sitemap: https://linehero.tw/sitemap.xml
+
+# Prevent crawling of unnecessary files and directories
+Disallow: /assets/js/
+Disallow: /assets/css/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /api/
+Disallow: /temp/
+Disallow: /admin/
+
+# Crawl-delay for better server performance
+Crawl-delay: 10

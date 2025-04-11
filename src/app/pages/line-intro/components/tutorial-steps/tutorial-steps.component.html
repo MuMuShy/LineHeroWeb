@@ -1,0 +1,32 @@
+<div class="tutorial-section">
+  <h2>開始遊戲教學</h2>
+  
+  <div class="tutorial-steps">
+    <div class="qr-code-container">
+      <img src="https://qr-official.line.me/gs/M_765llgvq_GW.png?oat_content=qr" alt="LINE Hero QR Code">
+      <p class="qr-code-text">掃描 QR Code 加入遊戲</p>
+    </div>
+    <div class="step" *ngFor="let step of steps">
+      <div class="step-number">{{step.number}}</div>
+      <h3>{{step.title}}</h3>
+      <p>{{step.description}}</p>
+      <a *ngIf="step.hasButton" 
+         [href]="step.buttonLink" 
+         class="add-bot-btn" 
+         target="_blank">
+        {{step.buttonText}}
+      </a>
+    </div>
+  </div>
+
+  <div class="tutorial-note">
+    <div class="note-content">
+      <h4>小提示</h4>
+      <ul>
+        <li>電腦版可於聊天視窗中輸入任意文字，跳出的提示訊息即可展開冒險選單</li>
+        <li>加入官方群組可以跟其他玩家交流</li>
+        <li>每日登入都有簽到獎勵，加入傳奇冒險者可以享有更高福利</li>
+      </ul>
+    </div>
+  </div>
+</div>

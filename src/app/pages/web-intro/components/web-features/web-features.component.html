@@ -1,0 +1,13 @@
+<section class="web-features">
+  <h2>網頁功能特色</h2>
+  
+  <div class="features-grid" role="list">
+    <article class="feature-card" *ngFor="let feature of features" role="listitem">
+      <div class="feature-icon" aria-hidden="true">
+        <fa-icon [icon]="feature.icon" size="2x"></fa-icon>
+      </div>
+      <h3>{{feature.title}}</h3>
+      <p>{{feature.description}}</p>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<section class="preview-section">
+  <h2>功能預覽</h2>
+  <div class="preview-grid">
+    <article class="preview-card" *ngFor="let preview of previews">
+      <img [src]="preview.image" 
+           [alt]="preview.title + '預覽'" 
+           loading="lazy"
+           width="400"
+           height="300">
+      <div class="preview-content">
+        <h3>{{preview.title}}</h3>
+        <p>{{preview.description}}</p>
+      </div>
+    </article>
+  </div>
+</section>

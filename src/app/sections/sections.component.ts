@@ -59,6 +59,13 @@ import { Component, OnInit, ElementRef } from '@angular/core';
             </div>
           </div>
         </div>
+        
+        <div class="intro-cta">
+          <a [href]="'/game-intro/line'" class="learn-more-btn">
+            <span>了解更多遊戲玩法</span>
+            <div class="button-glow"></div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -200,7 +207,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
     <section id="boss" class="game-section">
       <div class="section-content">
-        <h2>世界Boss戰鬥</h2>
+      <h2>世界Boss戰鬥</h2>
         <p class="section-description">與全服玩家一同挑戰史詩級世界Boss，獲取稀有獎勵</p>
         
         <div class="boss-showcase">
@@ -1099,6 +1106,33 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
     .lazy-image.loaded {
       opacity: 1;
+    }
+
+    .intro-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .learn-more-btn {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2.5rem;
+      background: #7c5ec6;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .learn-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(124, 94, 198, 0.3);
     }
   `]
 })

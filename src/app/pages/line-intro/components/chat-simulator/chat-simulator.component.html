@@ -1,0 +1,52 @@
+<div class="chat-simulator">
+  <!-- 外部提示區域 -->
+  <div class="demo-pointer">
+    <div class="pointer-content">
+      <i class="fas fa-gamepad"></i>
+      <span>點擊按鈕或輸入指令來體驗遊戲！</span>
+    </div>
+    <svg class="pointer-arrow" width="50" height="50" viewBox="0 0 50 50">
+      <path d="M10 10 L40 40" stroke="#00c300" stroke-width="2" fill="none"/>
+      <path d="M35 40 L40 40 L40 35" stroke="#00c300" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- 原有的聊天介面 -->
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="/assets/images/linehero.webp" alt="LINE Hero" class="bot-avatar">
+      <div class="chat-info">
+        <h3>LINE Hero</h3>
+        <span class="status">官方帳號</span>
+      </div>
+    </div>
+    <div class="messages">
+      <div *ngFor="let message of messages" 
+           [ngClass]="{'message': true, 'user-message': message.type === 'user', 'bot-message': message.type === 'bot'}">
+        <div class="message-content">
+          <p *ngIf="message.messageType != 'image'">{{ message.content }}</p>
+          <div *ngIf="message.messageType === 'flex' && message.buttons" class="flex-buttons">
+            <button *ngFor="let button of message.buttons"
+                    class="flex-button"
+                    (click)="handleButtonClick(button.action)">
+              {{ button.label }}
+            </button>
+          </div>
+          <div *ngIf="message.messageType === 'image'">
+            <img [src]="message.content" alt="圖片" class="image-message">
+          </div>
+        </div>
+        <div class="message-time">{{ message.time }}</div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" 
+             [formControl]="messageInput" 
+             (keyup.enter)="sendMessage()"
+             placeholder="輸入訊息...">
+      <button (click)="sendMessage()">發送</button>
+    </div>
+  </div>
+</div>
+
