@@ -15,7 +15,7 @@ import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
           <p class="hero-subtitle">不需安裝，LINE聊天視窗立即遊玩</p>
           <div class="cta-container">
             <button class="cta-button">
-              <span class="button-text">LINE立即遊戲</span>
+              <span class="button-text" (click)="openLineGame()">LINE立即遊戲</span>
               <div class="button-glow"></div>
             </button>
           </div>
@@ -284,4 +284,8 @@ export class HeroComponent implements OnInit {
   onWindowScroll() {
     this.isScrolled = window.scrollY > 100;
   }
+
+  openLineGame() {
+      window.open('https://lin.ee/hI9teY5', '_blank');
+    }
 }
