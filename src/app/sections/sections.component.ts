@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sections',
   standalone: true,
+  imports: [RouterModule],
   template: `
     <section id="intro" class="game-section">
       <div class="intro-content">
@@ -236,6 +238,37 @@ import { Component, OnInit, ElementRef } from '@angular/core';
       </div>
     </section>
 
+    <!-- 添加上班遊戲專題區塊 -->
+    <section id="office-gaming" class="section">
+      <div class="section-container">
+        <div class="section-content">
+          <h2>上班也能玩的LINE遊戲</h2>
+          <p class="section-description">
+            在工作間隙享受不引人注目、隨時可暫停的LINE文字冒險。
+            無論是等電梯的30秒，還是短暫的茶水間休息，都能快速體驗遊戲樂趣。
+          </p>
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-text">低調不引人注目</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">快速遊戲體驗</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">隨時可暫停</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-text">LINE聊天室窗直接遊玩</div>
+            </div>
+          </div>
+          <a routerLink="/office-games" class="learn-more-btn">了解更多</a>
+        </div>
+        <div class="section-image">
+          <img src="/assets/images/test1.webp" alt="上班也能玩的LINE遊戲">
+        </div>
+      </div>
+    </section>
+
     <section id="community" class="game-section">
       <div class="community-bg"></div>
       <div class="section-content">
@@ -270,6 +303,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
         </div>
       </div>
     </section>
+
   `,
   styles: [`
     .game-section {
@@ -1133,6 +1167,117 @@ import { Component, OnInit, ElementRef } from '@angular/core';
     .learn-more-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(124, 94, 198, 0.3);
+    }
+
+    /* 上班遊戲專題區塊樣式 */
+    #office-gaming {
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/assets/images/office-bg.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 0;
+      color: #ffffff; /* 確保基本文字顏色為白色 */
+    }
+    
+    .section-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      align-items: center;
+      gap: 40px;
+    }
+    
+    .section-content {
+      flex: 1;
+    }
+    
+    .section-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff; /* 標題使用白色 */
+      text-shadow: 0 0 10px rgba(124, 94, 198, 0.5); /* 添加發光效果增強可見性 */
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #ffffff; /* 描述文字使用白色 */
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    
+    .features-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1); /* 添加半透明背景增強可讀性 */
+      padding: 10px 15px;
+      border-radius: 30px;
+    }
+    
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(124, 94, 198, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff; /* 圖標使用白色 */
+    }
+    
+    .feature-text {
+      font-weight: bold;
+      color: #ffffff; /* 特性文字使用白色 */
+    }
+    
+    .learn-more-btn {
+      display: inline-block;
+      background: #7c5ec6;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(124, 94, 198, 0.4); /* 添加發光效果使按鈕更突出 */
+    }
+    
+    .learn-more-btn:hover {
+      background: #9370db;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(124, 94, 198, 0.6);
+    }
+    
+    .section-image {
+      flex: 1;
+    }
+    
+    .section-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .section-container {
+        flex-direction: column-reverse;
+      }
+      
+      .section-content h2 {
+        font-size: 2rem;
+      }
+      
+      .features-list {
+        justify-content: center;
+      }
     }
   `]
 })

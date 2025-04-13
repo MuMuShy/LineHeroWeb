@@ -35,4 +35,19 @@
       <image:title>自由市場預覽</image:title>
     </image:image>
   </url>
+
+  <url>
+    <loc>https://linehero.tw/office-games</loc>
+    <lastmod>2024-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://linehero.tw/assets/images/demo1.jpg</image:loc>
+      <image:title>LINE Hero遊戲畫面展示</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://linehero.tw/assets/images/demo_character.jpg</image:loc>
+      <image:title>LINE Hero遊戲畫面展示</image:title>
+    </image:image>
+  </url>
 </urlset>
