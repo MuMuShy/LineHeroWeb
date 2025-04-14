@@ -1,0 +1,608 @@
+// src/app/pages/shop/shop.component.scss
+.shop-container {
+    max-width: 1200px;
+    margin: 80px auto 0; // 增加上方間距，避免與導航欄重疊
+    padding: 2rem;
+    min-height: calc(100vh - 80px); // 調整最小高度計算
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf5 100%);
+    
+    @media (max-width: 768px) {
+      margin-top: 60px; // 在手機版上稍微減少上方間距
+      padding: 1rem;
+    }
+  }
+  
+  .shop-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    h1 {
+      font-size: 3rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .shop-description {
+      color: #34495e;
+      font-size: 1.3rem;
+    }
+  }
+  
+  .category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  
+    button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      }
+  
+      &.active {
+        background: #00B900;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem;
+  }
+  
+  .product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    height: auto !important;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+  
+    &[data-category='membership'] {
+      background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+      transform: none;
+      height: auto !important;
+      
+      .product-info {
+        background: rgba(255, 255, 255, 0.95);
+        
+        h3 {
+          color: #1a2a6c;
+          font-size: 1.8rem;
+          text-align: center;
+          margin-bottom: 1.5rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          position: relative;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+          }
+        }
+  
+        .description {
+          color: #34495e;
+          text-align: center;
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          line-height: 1.6;
+        }
+  
+        .product-details {
+          padding: 1rem;
+          
+          .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            
+            .category-title {
+              grid-column: 1 / -1;
+              background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+              color: white;
+              padding: 0.8rem 1rem;
+              font-size: 1.1rem;
+              font-weight: 600;
+              border-radius: 8px 8px 0 0;
+              margin: 1rem 0 0 0;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              
+              &:first-child {
+                margin-top: 0;
+              }
+              
+              .emoji {
+                font-size: 1.3rem;
+              }
+            }
+            
+            .benefit-category {
+              grid-column: 1 / -1;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 0.5rem;
+              background: white;
+              padding: 0.8rem;
+              border: 1px solid rgba(0,0,0,0.1);
+              border-top: none;
+              border-radius: 0 0 8px 8px;
+              
+              li {
+                background: #f8f9fa;
+                border: 1px solid rgba(0,0,0,0.1);
+                border-radius: 4px;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                strong {
+                  color: #ff6b6b;
+                  font-weight: 600;
+                  background: rgba(255, 107, 107, 0.1);
+                  padding: 1px 4px;
+                  border-radius: 4px;
+                }
+                
+                .bonus {
+                  display: inline-flex;
+                  align-items: center;
+                  padding: 2px 8px;
+                  border-radius: 4px;
+                  font-size: 0.8rem;
+                  font-weight: 600;
+                  background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+                  color: white;
+                  margin-left: auto;
+                  
+                  &:hover {
+                    transform: scale(1.05);
+                    transition: transform 0.2s ease;
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        .price {
+          color: #b21f1f;
+          font-size: 2.5rem;
+          text-align: center;
+          margin: 2rem 0;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+          
+          &::before {
+            content: '月費';
+            font-size: 1.1rem;
+            color: #666;
+            margin-right: 0.5rem;
+            text-shadow: none;
+          }
+        }
+  
+        .buy-button {
+          background: linear-gradient(45deg, #1a2a6c, #b21f1f);
+          padding: 1.2rem;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+          
+          &:hover {
+            background: linear-gradient(45deg, #15225a, #961a1a);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+  
+    .product-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      }
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+    }
+  
+    &:hover .product-image img {
+      transform: scale(1.1);
+    }
+  
+    .product-info {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; // 確保內容不會溢出
+  
+      h3 {
+        margin: 0 0 1rem;
+        font-size: 1.4rem;
+        color: #2c3e50;
+        font-weight: bold;
+      }
+  
+      .description {
+        color: #7f8c8d;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+  
+      .product-details {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        flex: 1;
+        overflow-y: auto; // 內容過長時可滾動
+        
+        // 自定義滾動條樣式
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 3px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 3px;
+          
+          &:hover {
+            background: #555;
+          }
+        }
+      }
+  
+      .buttons-container {
+        display: flex;
+        gap: 1rem;
+        margin-top: auto; // 確保按鈕在底部
+        
+        .buy-button {
+          flex: 1;
+          padding: 1rem;
+          color: white;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+
+          &:first-child {
+            background: #00B900;
+            
+            &:hover {
+              background: #009900;
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba(0,185,0,0.3);
+            }
+          }
+
+          &:last-child {
+            background: #4a90e2;
+            
+            &:hover {
+              background: #357abd;
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba(74,144,226,0.3);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .price-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+  
+    button {
+      padding: 0.6rem 1.2rem;
+      border: 2px solid #00B900;
+      border-radius: 8px;
+      background: white;
+      color: #00B900;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+  
+      &:hover {
+        background: #f0fff0;
+      }
+  
+      &.active {
+        background: #00B900;
+        color: white;
+      }
+    }
+  }
+  
+  // 響應式設計優化
+  @media (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .shop-container {
+      padding: 1rem;
+    }
+  
+    .shop-header {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  
+    .products-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  
+    .product-card {
+      .product-image {
+        height: 200px;
+      }
+    }
+  
+    .price-filter {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      
+      button {
+        flex: 1;
+        min-width: 120px;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .category-tabs {
+      flex-direction: column;
+      gap: 1rem;
+      
+      button {
+        width: 100%;
+        padding: 0.8rem;
+      }
+    }
+  
+    .shop-header h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.membership-card {
+  max-width: 100%;
+  width: 100%;
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: auto !important; // 覆蓋固定高度
+  
+  .product-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .membership-details {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+    .duration {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      
+      .duration-icon {
+        font-size: 1.5rem;
+      }
+      
+      .duration-text {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+    }
+    
+    .benefits-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      
+      .benefit-category-block {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        padding: 1.5rem;
+        
+        .category-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          
+          .category-emoji {
+            font-size: 1.5rem;
+          }
+          
+          .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            color: #7c5ec6;
+          }
+        }
+        
+        .benefits-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          
+          .benefit-item {
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            
+            &:hover {
+              background: rgba(255, 255, 255, 0.05);
+            }
+            
+            .bonus {
+              display: inline-block;
+              padding: 0.2rem 0.5rem;
+              background: rgba(124, 94, 198, 0.2);
+              border-radius: 4px;
+              color: #7c5ec6;
+              font-size: 0.9rem;
+              margin-left: 0.5rem;
+            }
+            
+            strong {
+              color: #7c5ec6;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .buttons-container {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    .buy-button {
+      flex: 1;
+      padding: 1rem;
+      font-size: 1.1rem;
+      background: #7c5ec6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: #9579d1;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// 調整一般商品卡片的樣式
+.product-card:not(.membership-card) {
+  max-width: 350px;
+  
+  .product-details {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .membership-card {
+    .benefits-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .buttons-container {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  }
+}

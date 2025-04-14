@@ -3,6 +3,7 @@ import { LineIntroComponent } from './pages/line-intro/line-intro.component';
 import { HomeComponent } from './home.component';
 import { WebIntroComponent } from './pages/web-intro/web-intro.component';
 import { OfficeGamesComponent } from './pages/office-game/office-games.component';
+import { ShopComponent } from './pages/shop/shop.component';
 export const routes: Routes = [
     {
         path: '',
@@ -23,5 +24,10 @@ export const routes: Routes = [
         path: 'office-games',
         component: OfficeGamesComponent,
         title: 'LINE文字遊戲 | 上班族最佳選擇'
+    },
+    {
+        path: 'shop',
+        component: ShopComponent,
+        title: 'LINE Hero 商店'
     }
 ];
