@@ -286,6 +286,6 @@ export class HeroComponent implements OnInit {
   }
 
   openLineGame() {
-      window.open('https://lin.ee/hI9teY5', '_blank');
+      window.open('https://lin.ee/3JlUhak', '_blank');
     }
 }

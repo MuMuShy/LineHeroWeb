@@ -16,7 +16,7 @@ export class TutorialStepsComponent {
       description: '點擊按鈕或掃描QR code 加入LINE Hero官方帳號好友',
       hasButton: true,
       buttonText: '加入好友',
-      buttonLink: 'https://lin.ee/hI9teY5'
+      buttonLink: 'https://lin.ee/3JlUhak'
     },
     {
       number: 2,

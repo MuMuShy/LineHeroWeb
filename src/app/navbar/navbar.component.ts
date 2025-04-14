@@ -17,11 +17,7 @@ import { Component, HostListener } from '@angular/core';
         <li><a href="#community" (click)="scrollToSection($event, 'community')">社群</a></li>
       </ul>
       <div class="nav-cta">
-        <!-- <a href="https://line.me" target="_blank" rel="noopener" class="line-btn">
-          <img src="/assets/images/line-icon.png" alt="LINE" class="line-icon">
-          立即遊玩
-        </a> -->
-        <a href="https://lin.ee/hI9teY5"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="立即遊玩" height="36" border="0"></a>
+        <a href="https://lin.ee/3JlUhak"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="加入好友立即遊玩" height="36" border="0"></a>
       </div>
     </nav>
   `,

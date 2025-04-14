@@ -151,8 +151,8 @@ import { Component } from '@angular/core';
       <div class="cta-section">
         <h2>立即開始您的辦公室冒險</h2>
         <p>掃描下方QR碼或點擊按鈕，加入LINE Hero，體驗專為上班族設計的文字冒險！</p>
-        <img src="https://qr-official.line.me/gs/M_765llgvq_GW.png?oat_content=qr" alt="LINE Hero QR碼" class="qr-code">
-        <a href="https://lin.ee/eYmOP6z" class="cta-button">加入LINE Hero</a>
+        <img src="https://qr-official.line.me/gs/M_765llgvq_GW.png?oat__id=5256237&oat_content=qr" alt="LINE Hero QR碼" class="qr-code">
+        <a href="https://lin.ee/3JlUhak" class="cta-button">加入LINE Hero</a>
       </div>
     </div>
   `,
