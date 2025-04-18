@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && cp src/_headers dist/demo/",
     "scully": "scully",
     "scully:serve": "scully serve"
   },
