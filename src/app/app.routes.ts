@@ -4,6 +4,9 @@ import { HomeComponent } from './home.component';
 import { WebIntroComponent } from './pages/web-intro/web-intro.component';
 import { OfficeGamesComponent } from './pages/office-game/office-games.component';
 import { ShopComponent } from './pages/shop/shop.component';
+import { TermsComponent } from './pages/terms/terms.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { RefundComponent } from './pages/refund/refund.component';
 export const routes: Routes = [
     {
         path: '',
@@ -29,5 +32,20 @@ export const routes: Routes = [
         path: 'shop',
         component: ShopComponent,
         title: 'LINE Hero 商店'
+    },
+    {
+        path: 'terms',
+        component: TermsComponent,
+        title: '服務條款 | LINE Hero無盡冒險'
+    },
+    {
+        path: 'privacy',
+        component: PrivacyComponent,
+        title: '隱私政策 | LINE Hero無盡冒險'
+    },
+    {
+        path: 'refund',
+        component: RefundComponent,
+        title: '退款政策 | LINE Hero無盡冒險'
     }
 ];
