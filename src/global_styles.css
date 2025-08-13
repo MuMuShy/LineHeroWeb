@@ -1,3 +1,6 @@
+/* 導入遊戲風格字體 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap');
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -10,26 +13,297 @@
   src: url('https://fonts.cdnfonts.com/css/zh-cn-pixel-font');
 }
 
+:root {
+  /* 遊戲主題色彩 */
+  --primary-green: #00c300;
+  --secondary-purple: #7c5ec6;
+  --accent-gold: #ffd700;
+  --danger-red: #ff4444;
+  --success-green: #44ff44;
+  --warning-orange: #ff8800;
+  
+  /* 背景顏色 */
+  --bg-dark: #0a0a0a;
+  --bg-darker: #000000;
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-card-hover: rgba(255, 255, 255, 0.12);
+  
+  /* 遊戲化效果 */
+  --neon-glow: 0 0 20px;
+  --shadow-deep: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --border-glow: 1px solid;
+  
+  /* 字體 */
+  --font-game: 'Orbitron', 'GenshinFont', monospace;
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-normal: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 body {
-  font-family: 'GenshinFont', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5;
+  font-family: var(--font-normal);
+  line-height: 1.6;
   overflow-x: hidden;
-  background: #000;
+  background: var(--bg-darker);
+  color: white;
+  position: relative;
+}
+
+/* 動態星空背景 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 20s linear infinite;
+  z-index: -2;
+  opacity: 0.1;
+}
+
+/* 遊戲化按鈕樣式 */
+.game-button {
+  background: linear-gradient(45deg, var(--primary-green), #00aa00);
+  border: var(--border-glow) var(--primary-green);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--font-game);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.game-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neon-glow) var(--primary-green);
+  background: linear-gradient(45deg, #00ff00, var(--primary-green));
+}
+
+.game-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.game-button:hover::before {
+  left: 100%;
+}
+
+/* 遊戲化卡片樣式 */
+.game-card {
+  background: var(--bg-card);
+  border: var(--border-glow) rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-purple), var(--accent-gold));
+  border-radius: 14px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-deep);
+}
+
+.game-card:hover::before {
+  opacity: 0.6;
+}
+
+/* 遊戲標題樣式 */
+.game-title {
+  font-family: var(--font-game);
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, var(--primary-green), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 動畫效果 */
+@keyframes sparkle {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-100px); }
 }
 
 @keyframes floatAnimation {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
 }
 
 @keyframes glowPulse {
-  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0, 195, 0, 0.3);
+    border-color: rgba(0, 195, 0, 0.3);
+  }
+  50% { 
+    box-shadow: var(--neon-glow) rgba(0, 195, 0, 0.8);
+    border-color: rgba(0, 195, 0, 0.8);
+  }
+}
+
+@keyframes neonGlow {
+  0%, 100% { text-shadow: 0 0 5px currentColor; }
+  50% { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 滾動條樣式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-purple));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00ff00, #9966ff);
+}
+
+/* 選擇文字時的顏色 */
+::selection {
+  background: var(--primary-green);
+  color: white;
+}
+
+/* 響應式設計優化 */
+@media (max-width: 768px) {
+  .game-button {
+    padding: 14px 24px;
+    font-size: 16px;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+  
+  .game-card {
+    padding: 20px;
+    margin: 12px 0;
+  }
+  
+  body::before {
+    background-size: 150px 75px;
+  }
+  
+  /* 增強觸摸體驗 */
+  button, .game-button, .platform-card, .feature-card, .preview-card {
+    -webkit-tap-highlight-color: rgba(0, 195, 0, 0.2);
+    touch-action: manipulation;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --neon-glow: 0 0 15px;
+    --shadow-deep: 0 6px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .game-button {
+    padding: 16px 28px;
+    font-size: 18px;
+    min-height: 52px;
+    width: 100%;
+    margin: 8px 0;
+  }
+  
+  .game-card {
+    padding: 16px;
+    margin: 8px 0;
+    border-radius: 8px;
+  }
+  
+  /* 簡化動畫以提升性能 */
+  .game-card:hover,
+  .feature-card:hover,
+  .preview-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* 優化文字大小 */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+/* 無障礙設計 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高對比度模式 */
+@media (prefers-contrast: high) {
+  :root {
+    --bg-card: rgba(255, 255, 255, 0.15);
+    --bg-card-hover: rgba(255, 255, 255, 0.25);
+  }
 }

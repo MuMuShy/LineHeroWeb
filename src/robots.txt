@@ -1,20 +1,56 @@
-# LINE Hero Website Robots.txt
+# LINE Hero無盡冒險 - 台灣最受歡迎LINE文字RPG遊戲
+# 官方網站 Robots.txt
+
 User-agent: *
 Allow: /
+
+# 主要頁面
 Allow: /game-intro/line
 Allow: /game-intro/web
+Allow: /shop
+Allow: /terms
+Allow: /privacy
+Allow: /refund
+Allow: /office-games
 
-# Allow crawling of sitemap
-Sitemap: https://linehero.tw/sitemap.xml
+# 允許爬取重要資源
+Allow: /assets/images/
+Allow: /assets/videos/
+Allow: /assets/*.webp
+Allow: /assets/*.jpg
+Allow: /assets/*.png
+Allow: /assets/*.svg
+Allow: /assets/*.mp4
 
-# Prevent crawling of unnecessary files and directories
+# 禁止爬取的目錄和文件
 Disallow: /assets/js/
 Disallow: /assets/css/
 Disallow: /*.js$
 Disallow: /*.css$
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /src/
 Disallow: /api/
 Disallow: /temp/
 Disallow: /admin/
+Disallow: /_headers
+Disallow: /scully.log
 
-# Crawl-delay for better server performance
-Crawl-delay: 10
+# 網站地圖
+Sitemap: https://linehero.tw/sitemap.xml
+
+# 針對不同爬蟲的設定
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# 一般爬蟲延遲
+Crawl-delay: 5

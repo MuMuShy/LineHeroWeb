@@ -21,31 +21,59 @@
 }
 
 .feature-card {
-  background: rgba(124, 94, 198, 0.1);
-  border: 1px solid rgba(124, 94, 198, 0.3);
+  background: var(--bg-card);
+  border: var(--border-glow) rgba(124, 94, 198, 0.3);
   border-radius: 15px;
   padding: 2rem;
   transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--secondary-purple), var(--primary-green));
+    border-radius: 17px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
-    transform: translateY(-5px);
-    border-color: rgba(124, 94, 198, 0.8);
-    box-shadow: 0 0 30px rgba(124, 94, 198, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    background: var(--bg-card-hover);
+    box-shadow: var(--shadow-deep);
+    
+    &::before {
+      opacity: 0.6;
+    }
+    
+    .feature-icon {
+      animation: floatAnimation 1s ease-in-out;
+    }
   }
 
   .feature-icon {
-    color: #00c300;  // LINE的主題綠色
+    color: var(--primary-green);
     margin-bottom: 1rem;
+    font-size: 2.5rem;
     
     fa-icon {
-      filter: drop-shadow(0 0 10px rgba(0, 195, 0, 0.3));
+      filter: drop-shadow(0 0 15px rgba(0, 195, 0, 0.6));
     }
   }
 
   h3 {
     font-size: 1.5rem;
-    color: #7c5ec6;
+    font-family: var(--font-game);
+    color: var(--secondary-purple);
     margin-bottom: 1rem;
+    font-weight: 700;
   }
 
   p {
@@ -79,17 +107,38 @@
 }
 
 .preview-card {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--bg-card);
+  border: var(--border-glow) rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   overflow: hidden;
   transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--secondary-purple), var(--accent-gold));
+    border-radius: 17px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(124, 94, 198, 0.2);
+    transform: translateY(-8px) rotateY(5deg);
+    box-shadow: var(--shadow-deep);
+
+    &::before {
+      opacity: 0.5;
+    }
 
     img {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 
@@ -97,7 +146,8 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
+    filter: brightness(0.9);
   }
 
   .preview-content {
@@ -105,8 +155,10 @@
 
     h4 {
       font-size: 1.3rem;
-      color: #7c5ec6;
+      font-family: var(--font-game);
+      color: var(--secondary-purple);
       margin-bottom: 0.5rem;
+      font-weight: 700;
     }
 
     p {

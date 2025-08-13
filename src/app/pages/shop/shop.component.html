@@ -18,77 +18,29 @@
       </button>
     </div>
   
-    <div *ngIf="currentCategory === 'giftpack'" class="price-filter">
-      <button 
-        [class.active]="currentPriceFilter === null"
-        (click)="setPriceFilter(null)">
-        全部商品
-      </button>
-      <button 
-        *ngFor="let priceCategory of priceCategories"
-        [class.active]="currentPriceFilter === priceCategory.price"
-        (click)="setPriceFilter(priceCategory.price)">
-        {{ priceCategory.label }}
-      </button>
-    </div>
-  
-    <!-- 商品列表 -->
-    <div class="products-grid">
-      <div *ngFor="let product of filteredProducts" 
-           class="product-card"
-           [class.membership-card]="product.category === 'membership'"
-           [attr.data-category]="product.category">
-        <div class="product-image">
-          <img [src]="product.image" [alt]="product.name">
-        </div>
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p class="description">{{ product.description }}</p>
-          
-          <!-- 商品詳情 -->
-          <ng-container *ngIf="product.category === 'giftpack'">
-            <div class="product-details">
-              <ul class="items-list">
-                <li *ngFor="let item of product.details.items">
-                  <span class="item-name">{{ item.name }}</span>
-                  <span class="item-quantity">×{{ item.quantity }}</span>
-                </li>
-              </ul>
-            </div>
-          </ng-container>
-            
-          <ng-container *ngIf="product.category === 'membership'">
-            <div class="membership-details">
-              <div class="duration">
-                <span class="duration-icon">⏳</span>
-                <span class="duration-text">會員期限：{{ product.details.duration }}天</span>
-              </div>
-              <div class="benefits-container">
-                <div *ngFor="let category of product.details.benefits" class="benefit-category-block">
-                  <div class="category-header">
-                    <span class="category-emoji">{{ category.emoji }}</span>
-                    <h4 class="category-title">{{ category.title }}</h4>
-                  </div>
-                  <ul class="benefits-list">
-                    <li *ngFor="let benefit of category.benefits" 
-                        class="benefit-item"
-                        [innerHTML]="benefit">
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </ng-container>
-
-          <div class="price">NT$ {{ product.price }}</div>
-          <div class="buttons-container">
-            <button class="buy-button" (click)="buyProduct(product)">
-              立即購買
-            </button>
-            <button class="buy-button" (click)="buyProduct(product,true)">
-              聯絡客服
-            </button>
+    <!-- 商品iframe展示區 -->
+    <div class="products-iframe-grid">
+      <div *ngFor="let product of filteredProducts" class="product-iframe-container">
+        <h3 class="product-title">{{ product.name }}</h3>
+        <div class="iframe-wrapper">
+          <!-- Loading 狀態 -->
+          <div *ngIf="!iframeLoaded[product.id]" class="loading-container">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">載入中...</p>
           </div>
+          
+          <!-- iframe -->
+          <iframe 
+            [src]="getSafeUrl(product.iframe)" 
+            width="400" 
+            height="620" 
+            style="border:0;" 
+            frameborder="0" 
+            loading="lazy"
+            [title]="product.name + ' 購買頁面'"
+            (load)="onIframeLoad(product.id)"
+            [class.hidden]="!iframeLoaded[product.id]">
+          </iframe>
         </div>
       </div>
     </div>
